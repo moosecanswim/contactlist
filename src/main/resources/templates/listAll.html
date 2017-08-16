@@ -9,6 +9,7 @@
 
     <table border="1">
         <tr>
+            <th>Entry Id</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
@@ -16,6 +17,7 @@
             <th>Action</th>
         </tr>
         <tr th:each="i : ${allContacts}">
+            <td th:text="${i.id}"></td>
             <td th:text="${i.firstName}"></td>
             <td th:text="${i.lastName}"></td>
             <td th:text="${i.email}"></td>

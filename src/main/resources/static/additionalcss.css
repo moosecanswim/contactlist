@@ -1,0 +1,5 @@
+#success_message{ display: none;}
+#buttonSubmit , #buttonReset {
+    display:inline-block;
+    /**other codes**/
+}

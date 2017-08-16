@@ -3,88 +3,97 @@
 <head lang="en">
     <meta charset="UTF-8"/>
     <title>New Contact</title>
+
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
+    <!--My additional bootstrap-->
+    <link rel="stylesheet" href="additionalcss.css"/>
+
 </head>
 <body>
 
+    <div class="container">
+        <form class="well form-horizontal"
+              id="contact_form"
+              action="#"
+              th:action="@{/process/{id} (id=${aContact.id})}"
+              th:object="${aContact}">
+            <fieldset>
+                <!--Form Name-->
+                <legend>Add a Contact</legend>
 
-    <form class="well form-horizontal"
-          id="contact_form"
-          action="#"
-          th:action="@{/process/{id} (id=${aContact.id})}"
-          th:object="${aContact}">
-        <fieldset>
-            <!--Form Name-->
-            <legend>Add a Contact</legend>
-
-            <!--Hidden id -->
-            <input type="hidden" th:value="*{id}"/>
+                <!--Hidden id -->
+                <input type="hidden" th:value="*{id}"/>
 
 
-            <!--Text Input: First Name -->
-            <div class="form-group">
-                <label class="col-md control-label">First Name</label>
-                <div class="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <input th:type="text" th:field="*{firstName}"/>
-                        <span th:if="${#fields.hasErrors('firstName')}"
-                              th:errors="*{'firstName'}"></span><br />
+                <!--Text Input: First Name -->
+                <div class="form-group">
+                    <label class="col-md control-label">First Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <input name="firstName" placeholder="First Name" class="form-control" th:type="text" th:field="*{firstName}"/>
+                            <span th:if="${#fields.hasErrors('firstName')}"
+                                  th:errors="*{'firstName'}"></span><br />
+                        </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!--Text Input: Last Name -->
-            <div class="form-group">
-                <label class="col-md-4 control-label">Last Name</label>
-                <div vlass="col-md-4 inputGroupContainer">
-                    <div class="input-group">
-                        <input th:type="text" th:field="*{lastName}"/>
-                        <span th:if="${#fields.hasErrors('lastName')}"
-                              th:errors="*{'lastName'}"></span><br />
+                <!--Text Input: Last Name -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Last Name</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <input name="lastName" placeholder="Last Name" class="form-control" th:type="text" th:field="*{lastName}"/>
+                            <span th:if="${#fields.hasErrors('lastName')}"
+                                  th:errors="*{'lastName'}"></span><br />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!--Text input: Email-->
-            <div class="form-group">
-                <label class="col-md-4 inputGroupContainer">Email</label>
-                <div class="col-md-4 input-group">
-                    <input th:type="text" th:field="*{email}"/>
-                    <span th:if="${#fields.hasErrors('email')}"
-                          th:errors="*{'email'}"></span><br />
+                <!--Text input: Email-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Email</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
+                            <input name="email" placeholder="Email" class="form-control" th:type="text" th:field="*{email}"/>
+                            <span  th:if="${#fields.hasErrors('email')}" th:errors="*{'email'}"></span>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!--Text input: Phone Number-->
-            <div class="form-group">
-                <label class="col-md-4 inputGroupContainer">Phone Number</label>
-                <div class="col-md-4 input-group">
-                    <input th:type="text" th:field="*{phoneNumber}"/>
-                    <span th:if="${#fields.hasErrors('phoneNumber')}"
-                          th:errors="*{'phoneNumber'}"></span><br />
+                <!--Text input: Phone Number-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label">Phone Number</label>
+                    <div class="col-md-4 inputGroupContainer">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphion-user"></i></span>
+                            <input name="phoneNumber" placeholder="(xxx)-xxx-xxxx" class="form-control" th:type="text" th:field="*{phoneNumber}"/>
+                            <span th:if="${#fields.hasErrors('phoneNumber')}"
+                                  th:errors="*{'phoneNumber'}"></span><br />
+
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Success message -->
-            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+                <!-- Success message -->
+                <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
 
-            <!--Button: Save Contact-->
-            <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+                <!--Button: Save Contact-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label"></label>
+                    <div class="col-md-4">
+                        <button id="buttonSubmit" type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+                        <button id="buttonReset" type="reset" class="btn btn-warning">Clear <span class="glyphicon glyphicon-send"></span></button>
+
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="col-md-4 control-label"></label>
-                <div class="col-md-4">
-                    <button type="reset" class="btn btn-warning">Clear <span class="glyphicon glyphicon-send"></span></button>
-                </div>
-            </div>
 
-        </fieldset>
-    </form>
 
+            </fieldset>
+        </form>
+    </div>
 
 
 </body>
