@@ -31,9 +31,9 @@
                     <label class="col-md control-label">First Name</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
                             <input name="firstName" placeholder="First Name" class="form-control" th:type="text" th:field="*{firstName}"/>
-                            <span th:if="${#fields.hasErrors('firstName')}"
-                                  th:errors="*{'firstName'}"></span><br />
+                            <span  th:if="${#fields.hasErrors('firstName')}" th:errors="*{'firstName'}"></span>
                         </div>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
                     <label class="col-md-4 control-label">Last Name</label>
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-inbox"></i></span>
                             <input name="lastName" placeholder="Last Name" class="form-control" th:type="text" th:field="*{lastName}"/>
-                            <span th:if="${#fields.hasErrors('lastName')}"
-                                  th:errors="*{'lastName'}"></span><br />
+                            <span  th:if="${#fields.hasErrors('lastName')}" th:errors="*{'lastName'}"></span>
                         </div>
                     </div>
                 </div>
@@ -72,7 +72,6 @@
                             <input name="phoneNumber" placeholder="(xxx)-xxx-xxxx" class="form-control" th:type="text" th:field="*{phoneNumber}"/>
                             <span th:if="${#fields.hasErrors('phoneNumber')}"
                                   th:errors="*{'phoneNumber'}"></span><br />
-
                         </div>
                     </div>
                 </div>
