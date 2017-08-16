@@ -25,9 +25,9 @@
                 <label class="col-md control-label">First Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                    <input th:type="text" th:field="*{firstName}"/>
-                    <span th:if="${#fields.hasErrors('firstName')}"
-                          th:errors="*{'firstName'}"></span><br />
+                        <input th:type="text" th:field="*{firstName}"/>
+                        <span th:if="${#fields.hasErrors('firstName')}"
+                              th:errors="*{'firstName'}"></span><br />
                     </div>
                 </div>
             </div>
@@ -45,19 +45,43 @@
                 </div>
             </div>
 
-            <ul>
-                Email: <input th:type="text" th:field="*{email}"/>
-                <span th:if="${#fields.hasErrors('email')}"
-                      th:errors="*{'email'}"></span><br />
-            </ul>
-            <ul>
-                Phone Number: <input th:type="text" th:field="*{phoneNumber}"/>
-                <span th:if="${#fields.hasErrors('phoneNumber')}"
-                      th:errors="*{'phoneNumber'}"></span><br />
-            </ul>
-            <ul>
-                <input type="submit" value="Submit"/><input type="reset" value="Clear Form"/>
-            </ul>
+            <!--Text input: Email-->
+            <div class="form-group">
+                <label class="col-md-4 inputGroupContainer">Email</label>
+                <div class="col-md-4 input-group">
+                    <input th:type="text" th:field="*{email}"/>
+                    <span th:if="${#fields.hasErrors('email')}"
+                          th:errors="*{'email'}"></span><br />
+                </div>
+            </div>
+
+            <!--Text input: Phone Number-->
+            <div class="form-group">
+                <label class="col-md-4 inputGroupContainer">Phone Number</label>
+                <div class="col-md-4 input-group">
+                    <input th:type="text" th:field="*{phoneNumber}"/>
+                    <span th:if="${#fields.hasErrors('phoneNumber')}"
+                          th:errors="*{'phoneNumber'}"></span><br />
+                </div>
+            </div>
+
+            <!-- Success message -->
+            <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div>
+
+            <!--Button: Save Contact-->
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-warning">Save <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-4">
+                    <button type="reset" class="btn btn-warning">Clear <span class="glyphicon glyphicon-send"></span></button>
+                </div>
+            </div>
+
         </fieldset>
     </form>
 
