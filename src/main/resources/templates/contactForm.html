@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>New Contact</title>
+</head>
+<body>
+
+
+    <form class="well form-horizontal"
+          id="contact_form"
+          action="#"
+          th:action="@{/process/{id} (id=${aContact.id})}"
+          th:object="${aContact}">
+        <fieldset>
+            <!--Form Name-->
+            <legend>Add a Contact</legend>
+
+            <!--Hidden id -->
+            <input type="hidden" th:value="*{id}"/>
+
+
+            <!--Text Input: First Name -->
+            <div class="form-group">
+                <label class="col-md control-label">First Name</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                    <input th:type="text" th:field="*{firstName}"/>
+                    <span th:if="${#fields.hasErrors('firstName')}"
+                          th:errors="*{'firstName'}"></span><br />
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Text Input: Last Name -->
+            <div class="form-group">
+                <label class="col-md-4 control-label">Last Name</label>
+                <div vlass="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <input th:type="text" th:field="*{lastName}"/>
+                        <span th:if="${#fields.hasErrors('lastName')}"
+                              th:errors="*{'lastName'}"></span><br />
+                    </div>
+                </div>
+            </div>
+
+            <ul>
+                Email: <input th:type="text" th:field="*{email}"/>
+                <span th:if="${#fields.hasErrors('email')}"
+                      th:errors="*{'email'}"></span><br />
+            </ul>
+            <ul>
+                Phone Number: <input th:type="text" th:field="*{phoneNumber}"/>
+                <span th:if="${#fields.hasErrors('phoneNumber')}"
+                      th:errors="*{'phoneNumber'}"></span><br />
+            </ul>
+            <ul>
+                <input type="submit" value="Submit"/><input type="reset" value="Clear Form"/>
+            </ul>
+        </fieldset>
+    </form>
+
+
+
+</body>
+</html>
